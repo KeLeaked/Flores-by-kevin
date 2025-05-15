@@ -313,16 +313,40 @@
     </div>
 <button id="play-music-btn">🌸 Iniciar com música</button>
 
-<script>
-  const btn = document.getElementById('play-music-btn');
-  const music = document.getElementById('bg-music');
+<!-- Música -->
+<audio id="myAudio" autoplay loop>
+  <source src="sua-musica.mp3" type="audio/mpeg">
+  Seu navegador não suporta áudio.
+</audio>
 
-  btn.addEventListener('click', () => {
-    music.muted = false;
-    music.play();
-    btn.style.display = 'none'; // esconde o botão após iniciar
+<!-- Botão de Play -->
+<button id="playBtn" style="display:none; position:fixed; bottom:20px; left:20px; padding:10px 20px; font-size:16px; z-index:1000;">
+  ▶️ Tocar Música
+</button>
+
+<script>
+  const audio = document.getElementById("myAudio");
+  const playBtn = document.getElementById("playBtn");
+
+  // Tenta dar autoplay
+  window.addEventListener("DOMContentLoaded", () => {
+    const playPromise = audio.play();
+
+    if (playPromise !== undefined) {
+      playPromise.catch(() => {
+        // Autoplay bloqueado, mostrar botão
+        playBtn.style.display = "block";
+      });
+    }
+  });
+
+  // Botão ativa a música
+  playBtn.addEventListener("click", () => {
+    audio.play();
+    playBtn.style.display = "none";
   });
 </script>
+
 
     
   </body>
