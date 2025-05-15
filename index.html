@@ -311,12 +311,19 @@
         </div>
       </div>
     </div>
-<audio controls preload="auto">
-      <source src="horse.ogg" type="audio/ogg">
-        <source src="Audio/Musica.mp3" type="audio/mpeg">
-      Your browser does not support the audio element.
-      </audio><div class="container">
-    <script src="main.js"></script>
+<button id="play-music-btn">🌸 Iniciar com música</button>
+
+<script>
+  const btn = document.getElementById('play-music-btn');
+  const music = document.getElementById('bg-music');
+
+  btn.addEventListener('click', () => {
+    music.muted = false;
+    music.play();
+    btn.style.display = 'none'; // esconde o botão após iniciar
+  });
+</script>
+
     
   </body>
 </html>
