@@ -311,8 +311,6 @@
         </div>
       </div>
     </div>
-<button id="play-music-btn">🌸 Iniciar com música</button>
-
 <!-- Música -->
 <audio id="myAudio" autoplay loop>
   <source src="sua-musica.mp3" type="audio/mpeg">
@@ -320,7 +318,23 @@
 </audio>
 
 <!-- Botão de Play -->
-<button id="playBtn" style="display:none; position:fixed; bottom:20px; left:20px; padding:10px 20px; font-size:16px; z-index:1000;">
+<button id="playBtn"
+  style="
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 16px 28px;
+    font-size: 18px;
+    border: none;
+    border-radius: 12px;
+    background-color: #4CAF50;
+    color: white;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    cursor: pointer;
+    z-index: 9999;
+  ">
   ▶️ Tocar Música
 </button>
 
@@ -328,25 +342,21 @@
   const audio = document.getElementById("myAudio");
   const playBtn = document.getElementById("playBtn");
 
-  // Tenta dar autoplay
   window.addEventListener("DOMContentLoaded", () => {
     const playPromise = audio.play();
 
     if (playPromise !== undefined) {
       playPromise.catch(() => {
-        // Autoplay bloqueado, mostrar botão
         playBtn.style.display = "block";
       });
     }
   });
 
-  // Botão ativa a música
   playBtn.addEventListener("click", () => {
     audio.play();
     playBtn.style.display = "none";
   });
-</script>
-<script src="main.js"></script>
+</script<script src="main.js"></script>
 
     
   </body>
